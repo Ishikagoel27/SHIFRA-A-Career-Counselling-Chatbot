@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Shifra - AI Career Counselor</title>
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #1a1a3e 50%, #2b0a3a 100%);
+            color: white;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: rgba(15, 12, 41, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-family: 'Black Ops One', cursive;
+            font-size: 2rem;
+            background: linear-gradient(45deg, #00a8ff, #ff00e6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+        }
+
+        .menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .menu li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .menu li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, #00a8ff, #ff00e6);
+            transition: width 0.3s ease;
+        }
+
+        .menu li a:hover:after {
+            width: 100%;
+        }
+
+        .btn1 {
+            color: white;
+            padding: 0.7rem 2rem;
+            border-radius: 50px;
+            border: none;
+            background: linear-gradient(45deg, #00a8ff, #ff00e6);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 168, 255, 0.3);
+        }
+
+        .btn1:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 0, 230, 0.4);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 5%;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            font-family: 'Black Ops One', cursive;
+            background: linear-gradient(45deg, #00a8ff, #ff00e6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .page-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Content Cards */
+        .content-card {
+            background: rgba(15, 12, 41, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #00a8ff, #ff00e6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Black Ops One', cursive;
+            letter-spacing: 1px;
+        }
+
+        .card-text {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00a8ff, #ff00e6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .feature-title {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .feature-desc {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2rem 0;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Black Ops One', cursive;
+            font-size: 1.8rem;
+            background: linear-gradient(45deg, #00a8ff, #ff00e6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #00a8ff;
+        }
+
+        .footer-copy {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .menu {
+                margin: 1rem 0;
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .page-title {
+                font-size: 2.2rem;
+            }
+
+            .content-card {
+                padding: 1.5rem;
+            }
+
+            .card-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+
+            .page-subtitle {
+                font-size: 1rem;
+            }
+
+            .feature-list {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <h1 class="logo">SHIFRA</h1>
+        <ul class="menu">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="login.html">Profile</a></li>
+            <li><a href="quiz.html">Test</a></li>
+        </ul>
+        <button class="btn1" onclick="window.location.href='login.html'">Get Started</button>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <header class="page-header">
+            <h1 class="page-title">Meet Shifra</h1>
+            <p class="page-subtitle">Your Personal AI Career Counselor</p>
+        </header>
+
+        <div class="content-card">
+            <h2 class="card-title">About Shifra</h2>
+            <p class="card-text">
+                Shifra is a smart and friendly AI-based career counselor designed to help students explore and choose the right career path based on their interests, skills, and strengths. Whether you're confused about your future or just curious about where you fit best, Shifra is here to guide you.
+            </p>
+            <p class="card-text">
+                It interacts like a real counselor, asking meaningful questions, analyzing your responses, and offering personalized career suggestions using machine learning. The goal is to make career discovery fun, stress-free, and accessible to everyone.
+            </p>
+        </div>
+
+        <div class="content-card">
+            <h2 class="card-title">Why Choose Shifra?</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Fast & Free</h3>
+                    <p class="feature-desc">Available 24/7 at no cost to you</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🧠</div>
+                    <h3 class="feature-title">Clarity for Confused Minds</h3>
+                    <p class="feature-desc">Simplifies career decisions for undecided students</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🌍</div>
+                    <h3 class="feature-title">Bridges the Gap</h3>
+                    <p class="feature-desc">Connects your interests with real opportunities</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🏡</div>
+                    <h3 class="feature-title">Accessible Everywhere</h3>
+                    <p class="feature-desc">Brings counseling to underserved areas</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2 class="card-title">How It Works</h2>
+            <p class="card-text">
+                Shifra uses advanced AI algorithms to analyze your responses and match them with the most suitable career paths. Here's how you can get started:
+            </p>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-icon">1</div>
+                    <h3 class="feature-title">Take the Assessment</h3>
+                    <p class="feature-desc">Answer questions about your interests and skills</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">2</div>
+                    <h3 class="feature-title">Get Analyzed</h3>
+                    <p class="feature-desc">Our AI processes your unique profile</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">3</div>
+                    <h3 class="feature-title">Receive Guidance</h3>
+                    <p class="feature-desc">Get personalized career recommendations</p>
+                </div>
+            </div>
+            <button class="btn1" style="margin-top: 2rem; width: 100%;" onclick="window.location.href='quiz.html'">Start Your Career Assessment</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logo">SHIFRA</div>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="mailto:contact@shifra.com">Contact Us</a>
+        </div>
+        <p class="footer-copy">© 2025 Shifra AI. All rights reserved.</p>
+    </footer>
+</body>
+</html>
